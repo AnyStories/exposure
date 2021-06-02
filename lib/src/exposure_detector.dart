@@ -7,15 +7,15 @@ import './render_exposure_detector.dart';
 
 class ExposureDetector extends SingleChildRenderObjectWidget {
   const ExposureDetector({
-    @required Key key,
-    @required Widget child,
+    required Key key,
+    required Widget child,
     this.onExposure,
   })  : assert(key != null),
         assert(child != null),
         super(key: key, child: child);
 
   /// 回调触发曝光函数
-  final ExposureCallback onExposure;
+  final ExposureCallback? onExposure;
 
   @override
   RenderExposureDetector createRenderObject(BuildContext context) {
@@ -33,21 +33,21 @@ class ExposureDetector extends SingleChildRenderObjectWidget {
   }
 }
 
-typedef ExposureCallback = void Function(VisibilityInfo info);
+typedef ExposureCallback = void Function(VisibilityInfo info)?;
 
 @immutable
 class VisibilityInfo {
   /// Constructor.
   ///
-  const VisibilityInfo({@required this.key, Size size, Rect visibleBounds})
+  const VisibilityInfo({required this.key, Size? size, Rect? visibleBounds})
       : assert(key != null),
         size = size ?? Size.zero,
         visibleBounds = visibleBounds ?? Rect.zero;
 
   factory VisibilityInfo.fromRects({
-    @required Key key,
-    @required Rect widgetBounds,
-    @required Rect clipRect,
+    required Key key,
+    required Rect widgetBounds,
+    required Rect clipRect,
   }) {
     assert(widgetBounds != null);
     assert(clipRect != null);

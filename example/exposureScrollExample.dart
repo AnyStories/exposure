@@ -1,6 +1,5 @@
 import 'package:exposure/exposure.dart';
 import 'package:flutter/material.dart';
-import 'package:toast/toast.dart';
 
 class ExposureScrollExample extends StatefulWidget {
   @override
@@ -52,8 +51,8 @@ class _ExposureScrollState extends State<ExposureScrollExample> {
                       bottom: BorderSide(color: Colors.white, width: 10))),
             ),
             onExposure: (visibilityInfo) {
-              Toast.show('第$index 块曝光,展示比例为${visibilityInfo.visibleFraction}',
-                  context);
+              // Toast.show('第$index 块曝光,展示比例为${visibilityInfo.visibleFraction}',
+              //     context);
             },
           );
         }, childCount: 10)),

@@ -4,7 +4,7 @@ class LruList<T> {
   final int maxLength;
   Queue<T> _list = new Queue();
 
-  LruList({this.maxLength});
+  LruList({required this.maxLength});
 
   bool contains(T element) {
     return _list.contains(element);

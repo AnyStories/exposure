@@ -1,6 +1,5 @@
 import 'package:exposure/exposure.dart';
 import 'package:flutter/material.dart';
-import 'package:toast/toast.dart';
 
 class ExposureAnimateExample extends StatefulWidget {
   @override
@@ -9,8 +8,8 @@ class ExposureAnimateExample extends StatefulWidget {
 
 class _ExposureAnimateState extends State<ExposureAnimateExample>
     with TickerProviderStateMixin {
-  AnimationController controller;
-  Animation<num> animation;
+  late AnimationController controller;
+  late Animation<num> animation;
   int bulletIndex = 0;
 
   @override
@@ -73,7 +72,7 @@ class _ExposureAnimateState extends State<ExposureAnimateExample>
                         index: bulletIndex,
                       ),
                       onExposure: (visibilityInfo) {
-                        Toast.show('第$bulletIndex 条弹幕曝光', context);
+                        // Toast.show('第$bulletIndex 条弹幕曝光', context);
                       }),
                   animation: animation,
                 )
@@ -89,7 +88,7 @@ class _ExposureAnimateState extends State<ExposureAnimateExample>
 
 class BulletScreenItem extends StatelessWidget {
   final int index;
-  BulletScreenItem({this.index});
+  BulletScreenItem({required this.index});
   @override
   Widget build(BuildContext context) {
     return Opacity(
@@ -134,9 +133,9 @@ class AnimatedBulletScreenItem extends AnimatedWidget {
   final Widget child;
   final double top;
   AnimatedBulletScreenItem({
-    Key key,
-    Animation<num> animation,
-    this.child,
+    Key? key,
+    required Animation<num> animation,
+    required this.child,
     this.top = 0,
   }) : super(key: key, listenable: animation);
   @override

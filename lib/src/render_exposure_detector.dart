@@ -8,19 +8,19 @@ import './exposure_detector_layer.dart';
 class RenderExposureDetector extends RenderProxyBox {
   /// Constructor.
   RenderExposureDetector(
-      {RenderBox child, @required this.key, ExposureCallback onExposure})
+      {RenderBox? child, required this.key, ExposureCallback? onExposure})
       : assert(key != null),
         _onExposure = onExposure,
         super(child);
-  final Key key;
-  ExposureCallback _onExposure;
+  final Key? key;
+  ExposureCallback? _onExposure;
 
   /// See [RenderObject.alwaysNeedsCompositing].
   @override
   bool get alwaysNeedsCompositing => (_onExposure != null);
 
   /// See [VisibilityDetector.onVisibilityChanged].
-  ExposureCallback get onExposure => _onExposure;
+  ExposureCallback? get onExposure => _onExposure;
 
   set onExposure(ExposureCallback value) {
     _onExposure = value;
@@ -32,14 +32,14 @@ class RenderExposureDetector extends RenderProxyBox {
   @override
   void paint(PaintingContext context, Offset offset) {
     if (_onExposure == null ||
-        ExposureDetectorController.instance.filterKeysContains(key)) {
+        ExposureDetectorController.instance.filterKeysContains(key!)) {
       // 不在需要创建ExposureDetectorLayer
-      ExposureDetectorLayer.forget(key);
+      ExposureDetectorLayer.forget(key!);
       super.paint(context, offset);
       return;
     }
     var visibilityDetectorLayer = ExposureDetectorLayer(
-      key: key,
+      key: key!,
       widgetSize: semanticBounds.size,
       paintOffset: offset,
       onExposureChanged: _onExposure,

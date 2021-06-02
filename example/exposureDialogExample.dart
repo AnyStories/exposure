@@ -1,6 +1,5 @@
 import 'package:exposure/exposure.dart';
 import 'package:flutter/material.dart';
-import 'package:toast/toast.dart';
 
 class ExposureDialogExample extends StatefulWidget {
   @override
@@ -67,7 +66,7 @@ class _ExposureDialogState extends State<ExposureDialogExample> {
                           ],
                         ),
                         onExposure: (visibilityInfo) {
-                          Toast.show('alert dialog exposure', context);
+                          // Toast.show('alert dialog exposure', context);
                         },
                       );
                     },
@@ -102,7 +101,7 @@ class _ExposureDialogState extends State<ExposureDialogExample> {
                         child: Dialog(child: child),
                         key: Key('optional_dialog'),
                         onExposure: (visibilityInfo) {
-                          Toast.show('option dialog exposure', context);
+                          // Toast.show('option dialog exposure', context);
                         },
                       );
                     },
