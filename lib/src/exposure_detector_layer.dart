@@ -50,7 +50,7 @@ class ExposureDetectorLayer extends ContainerLayer {
       {required this.key,
       required this.widgetSize,
       required this.paintOffset,
-      this.onExposureChanged})
+        required this.onExposureChanged})
       : assert(key != null),
         assert(paintOffset != null),
         assert(widgetSize != null),
@@ -174,7 +174,7 @@ class ExposureDetectorLayer extends ContainerLayer {
           clipRect: layer._computeClipRect());
 
       if (info.visibleFraction >= 0.8) {
-        layer.onExposureChanged!(info);
+        layer.onExposureChanged(info);
         toRemove.add(layer.key);
         // if (_exposureTime[layer.key] != null &&
         //     _exposureTime[layer.key].time > 0) {

@@ -8,19 +8,19 @@ import './exposure_detector_layer.dart';
 class RenderExposureDetector extends RenderProxyBox {
   /// Constructor.
   RenderExposureDetector(
-      {RenderBox? child, required this.key, ExposureCallback? onExposure})
+      {RenderBox? child, required this.key, required ExposureCallback onExposure})
       : assert(key != null),
         _onExposure = onExposure,
         super(child);
   final Key? key;
-  ExposureCallback? _onExposure;
+  ExposureCallback _onExposure;
 
   /// See [RenderObject.alwaysNeedsCompositing].
   @override
   bool get alwaysNeedsCompositing => (_onExposure != null);
 
   /// See [VisibilityDetector.onVisibilityChanged].
-  ExposureCallback? get onExposure => _onExposure;
+  ExposureCallback get onExposure => _onExposure;
 
   set onExposure(ExposureCallback value) {
     _onExposure = value;

@@ -9,13 +9,13 @@ class ExposureDetector extends SingleChildRenderObjectWidget {
   const ExposureDetector({
     required Key key,
     required Widget child,
-    this.onExposure,
+    required this.onExposure,
   })  : assert(key != null),
         assert(child != null),
         super(key: key, child: child);
 
   /// 回调触发曝光函数
-  final ExposureCallback? onExposure;
+  final ExposureCallback onExposure;
 
   @override
   RenderExposureDetector createRenderObject(BuildContext context) {
@@ -33,7 +33,7 @@ class ExposureDetector extends SingleChildRenderObjectWidget {
   }
 }
 
-typedef ExposureCallback = void Function(VisibilityInfo info)?;
+typedef ExposureCallback = void Function(VisibilityInfo info);
 
 @immutable
 class VisibilityInfo {
