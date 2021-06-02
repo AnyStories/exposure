@@ -10,7 +10,7 @@ import './exposure_detector_controller.dart';
 
 Iterable<Layer> _getLayerChain(Layer start) {
   final List<Layer> layerChain = <Layer>[];
-  for (Layer layer = start; layer != null; layer = layer.parent!) {
+  for (Layer? layer = start; layer != null; layer = layer.parent) {
     layerChain.add(layer);
   }
   return layerChain.reversed;
