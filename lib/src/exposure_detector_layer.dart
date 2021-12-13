@@ -224,7 +224,7 @@ class ExposureDetectorLayer extends ContainerLayer {
       _layerOffset = layerOffset;
       _scheduleUpdate();
     }
-    super.addToScene(builder, layerOffset);
+    super.addToScene(builder);
   }
 
   /// See [AbstractNode.attach].
