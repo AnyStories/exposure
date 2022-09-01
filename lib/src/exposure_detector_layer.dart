@@ -81,7 +81,7 @@ class ExposureDetectorLayer extends ContainerLayer {
     final updateInterval = ExposureDetectorController.instance.updateInterval;
     if (updateInterval == Duration.zero) {
       if (isFirstUpdate) {
-        SchedulerBinding.instance?.addPostFrameCallback((timeStamp) {
+        SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
           _processCallbacks();
         });
       }
@@ -99,7 +99,7 @@ class ExposureDetectorLayer extends ContainerLayer {
     final updateInterval = ExposureDetectorController.instance.updateInterval;
     if (updateInterval == Duration.zero) {
       if (isFirstUpdate) {
-        SchedulerBinding.instance?.addPostFrameCallback((timeStamp) {
+        SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
           _processCallbacks();
         });
       }
@@ -120,7 +120,7 @@ class ExposureDetectorLayer extends ContainerLayer {
 
     /// 确保在两次绘制中计算完
     SchedulerBinding.instance
-        ?.scheduleTask<void>(_processCallbacks, Priority.touch);
+        .scheduleTask<void>(_processCallbacks, Priority.touch);
   }
 
   /// 计算组件的矩形
@@ -131,8 +131,8 @@ class ExposureDetectorLayer extends ContainerLayer {
 
   /// 计算两个两个矩形相交
   Rect _computeClipRect() {
-    assert(RendererBinding.instance?.renderView != null);
-    Rect clipRect = Offset.zero & RendererBinding.instance!.renderView.size;
+    assert(RendererBinding.instance.renderView != null);
+    Rect clipRect = Offset.zero & RendererBinding.instance.renderView.size;
 
     ContainerLayer? parentLayer = parent;
     while (parentLayer != null) {
